@@ -12,9 +12,6 @@ export async function handler(event, context) {
     const image = await nodeHtmlToImage({
       html: `
       <html>
-          <head>
-            <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-          </head>
           <style>
               body {
                   width: 1600px;
@@ -23,7 +20,6 @@ export async function handler(event, context) {
                   line-height: 800px;
                   font-weight: 900;
                   text-align: center;
-                  font-family: "DM Sans", sans-serif;
               }
 
               div {
