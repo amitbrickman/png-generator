@@ -12,18 +12,13 @@ export async function handler(event, context) {
     const image = await nodeHtmlToImage({
       html: `
       <html>
-        <head>
-          <link rel="preconnect" href="https://fonts.googleapis.com">
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-          <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,900;1,9..40,900&display=swap" rel="stylesheet">
-        </head>
         <style>
             body {
                 width: 1600px;
                 height: 800px;
                 font-size: 880px;
                 line-height: 800px;
-                font-family: "DM Sans", sans-serif;
+                font-family: -apple-system, BlinkMacSystemFont, sans-serif;
                 font-weight: 900;
                 text-align: center;
             }
@@ -70,3 +65,11 @@ export async function handler(event, context) {
     }
   }
 }
+
+{/* <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,900;1,9..40,900&display=swap" rel="stylesheet">
+</head>
+
+font-family: "DM Sans", sans-serif; */}
