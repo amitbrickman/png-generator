@@ -10,7 +10,7 @@ chromium.setGraphicsMode = false
 
 export async function handler(event, context) {
   try {
-    // const SFfont = font2base64.encodeToDataUrlSync('../public/fonts/SF-Pro-Display-Heavy.otf');
+    const { days = 0 } = event.queryStringParameters;
 
     const image = await nodeHtmlToImage({
       html: `
@@ -40,7 +40,7 @@ export async function handler(event, context) {
       `,
       type: 'png',
       transparent: true,
-      content: { days: '165' },
+      content: { days },
       puppeteer,
       puppeteerArgs: {
         args: chromium.args,
@@ -71,41 +71,3 @@ export async function handler(event, context) {
     }
   }
 }
-
-// export async function handler(event, context) {
-//   try {
-//     const browser = await puppeteer.launch({
-//       args: chromium.args,
-//       defaultViewport: chromium.defaultViewport,
-//       executablePath: process.env.CHROME_EXECUTABLE_PATH || (await chromium.executablePath('/var/task/node_modules/@sparticuz/chromium/bin')),
-//     })
-
-//     const page = await browser.newPage()
-
-//     await page.goto(url)
-
-//     await page.waitForSelector('.title')
-
-//     const results = await page.$$eval('ul li', (articles) => {
-//       return articles.map((link) => {
-//         return {
-//           title: link.querySelector('a').innerText,
-//           url: link.querySelector('a').href,
-//         }
-//       })
-//     })
-
-//     await browser.close()
-
-//     return {
-//       statusCode: 200,
-//       body: JSON.stringify(results),
-//     }
-//   } catch (error) {
-//     console.error(error)
-//     return {
-//       statusCode: 500,
-//       body: JSON.stringify({ error }),
-//     }
-//   }
-// }
