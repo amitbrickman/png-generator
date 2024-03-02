@@ -7,7 +7,7 @@ chromium.setGraphicsMode = false
 
 export async function handler(event, context) {
   try {
-    const { days = 0 } = event.queryStringParameters;
+    const { days = 0, textColor = 'white' } = event.queryStringParameters;
 
     const image = await nodeHtmlToImage({
       html: `
@@ -29,7 +29,7 @@ export async function handler(event, context) {
             }
 
             div {
-                background: url("https://ios-widgets.vercel.app/static/images/tiger_pattern.png"), linear-gradient(45deg, #fb7324, #f7b733);
+                background: url("https://ios-widgets.vercel.app/static/images/tiger_pattern.png"), ${textColor};
                 background-repeat: no-repeat;
                 background-size: cover;
                 -webkit-background-clip: text;
