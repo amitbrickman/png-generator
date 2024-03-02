@@ -12,27 +12,33 @@ export async function handler(event, context) {
     const image = await nodeHtmlToImage({
       html: `
       <html>
-          <style>
-              body {
-                  width: 1600px;
-                  height: 800px;
-                  font-size: 900px;
-                  line-height: 800px;
-                  font-weight: 900;
-                  text-align: center;
-              }
+        <head>
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,900;1,9..40,900&display=swap" rel="stylesheet">
+        </head>
+        <style>
+            body {
+                width: 1600px;
+                height: 800px;
+                font-size: 880px;
+                line-height: 800px;
+                font-family: "DM Sans", sans-serif;
+                font-weight: 900;
+                text-align: center;
+            }
 
-              div {
-                  background: url("https://ios-widgets.vercel.app/static/images/tiger_pattern.png"), linear-gradient(45deg, #fb7324, #f7b733);
-                  background-repeat: no-repeat;
-                  background-size: cover;
-                  -webkit-background-clip: text;
-                  -webkit-text-fill-color: transparent;
-              }
-          </style>
-          <body>
-              <div>{{days}}</div>
-          </body>
+            div {
+                background: url("https://ios-widgets.vercel.app/static/images/tiger_pattern.png"), linear-gradient(45deg, #fb7324, #f7b733);
+                background-repeat: no-repeat;
+                background-size: cover;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        </style>
+        <body>
+            <div>{{days}}</div>
+        </body>
       </html>
       `,
       type: 'png',
