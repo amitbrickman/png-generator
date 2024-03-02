@@ -1,9 +1,6 @@
 import chromium from '@sparticuz/chromium';
 import puppeteer from 'puppeteer-core';
 import nodeHtmlToImage from 'node-html-to-image';
-// import font2base64 from 'node-font2base64';
-
-const url = 'https://lite.cnn.com/'
 
 chromium.setHeadlessMode = true
 chromium.setGraphicsMode = false
@@ -15,14 +12,18 @@ export async function handler(event, context) {
     const image = await nodeHtmlToImage({
       html: `
       <html>
+          <head>
+            <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+          </head>
           <style>
               body {
                   width: 1600px;
                   height: 800px;
                   font-size: 800px;
                   line-height: 800px;
-                  font-weight: bold;
+                  font-weight: 900;
                   text-align: center;
+                  font-family: "DM Sans", sans-serif;
               }
 
               div {
@@ -59,10 +60,6 @@ export async function handler(event, context) {
       isBase64Encoded: true,
     };
 
-    // return {
-    //   statusCode: 200,
-    //   body: JSON.stringify({ blob }),
-    // }
   } catch (error) {
     console.error(error)
     return {
