@@ -16,6 +16,8 @@ export async function handler(event, context) {
 
     const selectedColor = colors[textColor] || textColor;
 
+    console.log(chromium.args);
+
     const image = await nodeHtmlToImage({
       html: `
       <html>
@@ -53,7 +55,14 @@ export async function handler(event, context) {
       content: { days },
       puppeteer,
       puppeteerArgs: {
-        args: chromium.args,
+        args: ['--disable-gpu',
+          '--disable-dev-shm-usage',
+          '--disable-setuid-sandbox',
+          '--no-first-run',
+          '--no-sandbox',
+          '--no-zygote',
+          '--single-process'
+        ],
         defaultViewport: chromium.defaultViewport,
         executablePath: process.env.CHROME_EXECUTABLE_PATH || (await chromium.executablePath('/var/task/node_modules/@sparticuz/chromium/bin')),
         headless: true,
