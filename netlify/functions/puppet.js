@@ -19,7 +19,7 @@ export async function handler(event, context) {
               body {
                   width: 1600px;
                   height: 800px;
-                  font-size: 800px;
+                  font-size: 900px;
                   line-height: 800px;
                   font-weight: 900;
                   text-align: center;
