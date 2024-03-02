@@ -10,7 +10,7 @@ chromium.setGraphicsMode = false
 
 export async function handler(event, context) {
   try {
-    // const SFfont = font2base64.encodeToDataUrlSync('./public/fonts/SF-Pro-Display-Heavy.otf');
+    // const SFfont = font2base64.encodeToDataUrlSync('../public/fonts/SF-Pro-Display-Heavy.otf');
 
     const image = await nodeHtmlToImage({
       html: `
@@ -18,8 +18,9 @@ export async function handler(event, context) {
           <style>
               body {
                   width: 1600px;
-                  height: 950px;
+                  height: 800px;
                   font-size: 800px;
+                  line-height: 800px;
                   font-weight: bold;
                   text-align: center;
               }
