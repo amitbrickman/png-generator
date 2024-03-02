@@ -13,13 +13,18 @@ export async function handler(event, context) {
       html: `
       <html>
         <style>
+            @font-face {
+              font-family: "San Francisco";
+              src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-heavy-webfont.woff");
+            }
+
             body {
                 width: 1600px;
                 height: 800px;
                 font-size: 880px;
                 line-height: 800px;
-                font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-                font-weight: 900;
+                font-family: "San Francisco";
+                font-weight: 800;
                 text-align: center;
             }
 
