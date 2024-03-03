@@ -16,8 +16,6 @@ export async function handler(event, context) {
 
     const selectedColor = colors[textColor] || textColor;
 
-    console.log(chromium.args);
-
     const image = await nodeHtmlToImage({
       html: `
       <html>
