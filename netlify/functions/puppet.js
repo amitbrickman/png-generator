@@ -7,7 +7,7 @@ chromium.setGraphicsMode = false
 
 export async function handler(event, _) {
   try {
-    const { days = 0, textColor = 'white', shadow = 'none' } = event.queryStringParameters;
+    const { days = 0, textColor = 'white', shadow = 'none', pattern = 'tiger' } = event.queryStringParameters;
 
     const dropShadow = {
       none: `none`,
@@ -23,6 +23,7 @@ export async function handler(event, _) {
 
     const selectedColor = colors[textColor] || textColor;
     const selectedShadow = dropShadow[shadow];
+    const selectedPattern = `${pattern}_pattern.png`;
 
     const image = await nodeHtmlToImage({
       html: `
@@ -44,7 +45,7 @@ export async function handler(event, _) {
             }
 
             div {
-                background: url("https://ios-widgets.vercel.app/static/images/tiger_pattern.png"), ${selectedColor};
+                background: url("https://ios-widgets.vercel.app/static/images/${selectedPattern}"), ${selectedColor};
                 background-repeat: no-repeat;
                 background-size: cover;
                 -webkit-background-clip: text;
