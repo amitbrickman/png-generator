@@ -5,9 +5,16 @@ import nodeHtmlToImage from 'node-html-to-image';
 chromium.setHeadlessMode = true
 chromium.setGraphicsMode = false
 
-export async function handler(event, context) {
+export async function handler(event, _) {
   try {
-    const { days = 0, textColor = 'white' } = event.queryStringParameters;
+    const { days = 0, textColor = 'white', shadow = 'none' } = event.queryStringParameters;
+
+    const dropShadow = {
+      none: `none`,
+      small: `0px 0px 25px rgba(0, 0, 0, 0.44)`,
+      medium: `0px 0px 25px rgba(0, 0, 0, 0.65)`,
+      large: `0px 0px 25px rgba(0, 0, 0, 0.85)`,
+    }
 
     const colors = {
       gold: `radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
@@ -15,6 +22,7 @@ export async function handler(event, context) {
     }
 
     const selectedColor = colors[textColor] || textColor;
+    const selectedShadow = dropShadow[shadow];
 
     const image = await nodeHtmlToImage({
       html: `
@@ -41,6 +49,7 @@ export async function handler(event, context) {
                 background-size: cover;
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
+                filter: drop-shadow(${selectedShadow});
             }
         </style>
         <body>
@@ -84,11 +93,3 @@ export async function handler(event, context) {
     }
   }
 }
-
-{/* <head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,900;1,9..40,900&display=swap" rel="stylesheet">
-</head>
-
-font-family: "DM Sans", sans-serif; */}
