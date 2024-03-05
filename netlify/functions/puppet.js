@@ -11,7 +11,7 @@ export async function handler(event, _) {
 
     const dropShadow = {
       none: `none`,
-      small: `0px 0px 25px rgba(0, 0, 0, 0.44)`,
+      small: `0px 0px 35px rgba(0, 0, 0, 0.36)`,
       medium: `0px 0px 25px rgba(0, 0, 0, 0.65)`,
       large: `0px 0px 25px rgba(0, 0, 0, 0.85)`,
     }
