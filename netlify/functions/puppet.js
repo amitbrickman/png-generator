@@ -25,8 +25,6 @@ export async function handler(event, _) {
     const selectedShadow = dropShadow[shadow];
     const selectedPattern = `${pattern}_pattern.png`;
 
-    console.log(chromium.defaultViewport);
-
     console.log(`https://ios-widgets.vercel.app/static/images/${selectedPattern}`);
 
     const image = await nodeHtmlToImage({
